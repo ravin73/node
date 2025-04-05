@@ -4,7 +4,7 @@ const terser = require('terser');
 const MINIFY = true;
 
 try { fs.mkdirSync('./dist'); }
-catch (e) {}
+catch (e) { if(e.code !=='EEXIST') throw e}
 
 const wasmBuffer = fs.readFileSync('./lib/lexer.wasm');
 const jsSource = fs.readFileSync('./src/lexer.js').toString();
